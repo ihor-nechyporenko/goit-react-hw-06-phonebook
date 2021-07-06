@@ -1,8 +1,10 @@
 import { Component } from 'react';
+import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import shortid from 'shortid';
 
 import Notification from '../Notification';
+import actions from '../../redux/action';
 
 import styles from './Form.module.css';
 import fadeStyles from '../Notification/fadeNotification.module.css';
@@ -102,11 +104,19 @@ class Form extends Component {
           classNames={fadeStyles}
           unmountOnExit
         >
-          <Notification />
+          <Notification name={name} />
         </CSSTransition>
       </>
     );
   }
 }
 
-export default Form;
+const mapStateToProps = state => ({
+  savedContacts: state.phonebook.contacts,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onSubmit: data => dispatch(actions.addContact(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

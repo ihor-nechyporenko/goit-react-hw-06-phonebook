@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 
 import Container from './components/Container';
+import Header from './components/Header';
 import Form from './components/Form';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
 
 import './common.css';
 import fadeStyles from './fade/fadeFilter.module.css';
+import fadeHeaderStyles from './fade/fadeHeader.module.css';
 
 class App extends Component {
   // state = {
@@ -44,6 +46,16 @@ class App extends Component {
 
     return (
       <Container>
+        <CSSTransition
+          in={true}
+          appear
+          timeout={500}
+          classNames={fadeHeaderStyles}
+          unmountOnExit
+        >
+          <Header />
+        </CSSTransition>
+
         <Form />
 
         <CSSTransition
@@ -55,7 +67,15 @@ class App extends Component {
           <Filter />
         </CSSTransition>
 
-        <ContactList />
+        <CSSTransition
+          in={true}
+          appear
+          timeout={500}
+          classNames={fadeStyles}
+          unmountOnExit
+        >
+          <ContactList />
+        </CSSTransition>
       </Container>
     );
   }

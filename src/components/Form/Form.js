@@ -4,7 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import shortid from 'shortid';
 
 import Notification from '../Notification';
-import actions from '../../redux/action';
+import actions from '../../redux/phonebook-actions';
 
 import styles from './Form.module.css';
 import fadeStyles from '../Notification/fadeNotification.module.css';

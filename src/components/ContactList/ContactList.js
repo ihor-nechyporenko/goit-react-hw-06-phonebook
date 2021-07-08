@@ -37,6 +37,7 @@ ContactList.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string,
       number: PropTypes.string,
+      isContactExists: PropTypes.bool,
     }),
   ).isRequired,
 };

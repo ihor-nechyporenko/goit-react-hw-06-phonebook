@@ -1,6 +1,3 @@
-// import { createStore } from 'redux';
-// import { combineReducers } from 'redux';
-// import { composeWithDevTools } from 'redux-devtools-extension';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
   persistStore,
@@ -15,23 +12,11 @@ import {
 import storage from 'redux-persist/lib/storage';
 import phonebookReducer from './phonebook-reducer';
 
-// const rootReducer = combineReducers({
-//   phonebook: phonebookReducer,
-// });
-
-// const store = createStore(rootReducer, composeWithDevTools());
-
 const phonebookPersistConfig = {
   key: 'phonebook',
   storage,
   blacklist: ['filter'],
 };
-
-// const rootReducer = combineReducers({
-//   phonebook: persistReducer(persistConfig, phonebookReducer),
-// });
-
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: {
